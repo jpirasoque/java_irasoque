@@ -1,0 +1,177 @@
+import javax.swing.*;
+import javax.swing.event.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Licencia extend JFrame implements ActionListener, ChangeListener{
+
+  private JLabel label1, label2;
+  private JCheckBox check1;
+  private JButton buton1, buton2;
+  private JScrollPane scrollpane1;
+  private JtextArea textarea1;
+  String nombre = "";
+
+  public Licencia(){
+    setLayaut(null);
+    setTitle("Licencia de uso");
+    setIconImage(new ImageIcon(getClass().getResource("images/icon.png")).getImage());
+    Bienvenida ventanaBienvenida = new Bienvenida();
+    nombre = ventanaBienvenida.texto;
+
+    label1 = new JLabel("TERMINOS Y CONDICIONES");
+    label1.setBounds(255,5,200,30);
+    label1.setFont(new Font("Andale Mono", 1,14));
+    label1.setForeground(new Color(0, 0, 0));
+    add(label1);
+
+textarea1 = new JTextArea();
+textarea1.setEditable(false);
+textarea1.setFont(new Font("Andale Mono", 0, 9));
+textarea1.setText("\n\n  TERMINOS Y CONDICIONES"+
+                  "\n\n A.PROHIBIDA SU VENTA O DISTRIBUCION SIN AUTORIZACION DEL PROGRAMADOR."+
+                  "\n   B.PROHIBIDA LA ALTERACION DEL CODIGO FUENTE O DISEÑO DE LAS INTERFACES GRAFICAS."
+                  "\n   C.EL PROGRAMADOR NO SE HACE RESPONSABBLE DEL MAL USO DE ESTE SOFWARE."+
+                  "\n\n LOS ACUERDOS LEGALES EXPUESTOS ACONTINUACION RIGEN ENL USO QUE USTED HAGA DE ESTE SOFWARE."+
+                  "\n   (EL O LOS PROGRAMADORES NO SE RESPONSABILIZAN DEL USO QUE USTED"+
+                  "\n   HAGA CON ESTE SOFWARE Y SUS SERVICIOS. PARA ACEPTAR ESTOS TERMINOS HAGA CLICK EN (ACEPTO)"+
+                  "\n   SI USTED NO ACEPTA ESTOS TERMINOS, HAAGA CLIC EN (NO ACEPTO) Y NO UTILICE ESTE SOFWARE."+
+                  "\n\n PARA MAYOR INFROMACION SOBRE NUESTROS PRODUCTOS OSERVICIOS, POR FAVOR VISITE"+
+                  "\n http://www.programadores.com/thebestoftheuniverse");
+
+   scrollpanel = new JScrollPane(textarea1);
+   scrollpane1.setBounds(10,40,575,200);
+   add(scrollpanel1);
+
+   check1 = new  JcheckBox("Yo " +nombre+ "Aceptp");
+   check1.setBounds(10,250,300,30);
+   check1.addChangeListener(this);
+   add(check1);
+
+   boton1 = new JButton("Continuar");
+   boton1.setBounds(10,290,100,30);
+   boton1.addActionListener(this);
+   boton1.setEnabled(false);
+   add(boton1);
+
+   boton2 = new JButton("No Acepto");
+   boton2.setBounds(120,290,100,30);
+   boton2.addActionListener(this);
+   boton2.setEnabled(true);
+   add(boton2);
+
+   ImageIcon imagen = new ImageIcon("images/coca-cola.png);
+   label2 = new JLabel(imagen);
+   label2.setBounds(315,135,300,300);
+   add(label2);
+}
+
+ public void stateChanged(ChangeEvent e){
+   if(check1.isSelected()== true){
+      boton1.setEnabled(true);
+      boton2.setEnabled(false);
+   }else{
+      boton1.setEnabled(false);
+      boton2.setEnabled(true);
+   }
+}
+
+ public void actionPerformed(ActionEvent e){
+   if(e.getSource() == boton1){
+       Principal ventanaPrincipal = new Principal();
+       ventanaPrincipal.setBounds(0,0,640,535);
+       ventanaPrincipal.setVisible(true);
+       ventanaPrincipal.setResizable(false);
+       ventanaPrincipal.setLocationRelativeTo(null);
+       this.setVisible(false);
+     }else if(e.getSource() == boton2){
+       Bienvenida ventanabienvenida = new Bienvenida();
+       ventanabienvenida.setBunds(0,0,350,450);
+       ventanabienvenida.setVisible(true);
+       ventanabienvenida.setResizable(false);
+       ventanabienvenida.setLocationRelativeTo(null);
+       this.setVisible(false);
+    }
+}
+
+ public static void main(String args[]){
+  Licencia ventanalicencia = new Licencia();
+  ventanalicencia.setBounds(0,0,600,360);
+  ventanalicencia.setVisible(true);
+  ventanalicencia.setResizable(false);
+  ventanalicencia.setLocationRelativeTo(null);
+ }
+}
+
+  miElCreador = new JMenuItem("El Creador");
+  miElCreador.setFont(new Font("Andale Mono",1,14));
+  miElCreador.setForeground(new Color(255,0,0));
+  menuAcercaDe.add(miElCreador);
+  miElCreador.addActionListener(this);
+
+  miSalir = new JMenuItem("Salir");
+  miSalir.setfont(new Font("Andale Mono",1,14));
+  miSalir.setForeground(new Color(255, 0, 0));
+  menuOpciones.add(miSalir);
+  miSalir.addActionListener(this);
+
+  ImageIcon imagen = new ImageIcon("images/logo-coca.png");
+  labelLogo = new JLabel(imagen);
+  labelLogo.setBounds(5,5,250,100);
+  add(labelLogo);
+
+  labelBienvenido = new JLabel("Bienvenido " + nombreAdmistrador);
+  labelBienvenido.setBound(280,30,300,50);
+  labelBienvenido.setFont(new Font("Andale Mono" , 1,32));
+  labelBienvenido.setForeground(new Color(255, 255, 255));
+  add(labelBienvenido);
+
+  labelTitle = new JLabel("Datos del trabajador para el calculo de vacaciones");
+  labelTitle.setBounds(45,140,900,25);
+  labelTitle.setFont(new Font("Andale Mono" ,0,24));
+  labelTitle.setForeground(new Color(255,255,255));
+  add(labelTitle);
+	
+  labelNombre = new JLabe("Nombre completo:");
+  labelNombre.setBounds(25,188,180,25);
+  labelNombre.setFont(new Font("Andale Mono" ,1,12));
+  labelNombre.setForeground(new Color(255,255,255));
+  add(labelNombre);
+
+  txtNombreTrabajador = new JTextField();
+  txtNombreTrabajador.setBounds(25,213,150,25);
+  txtNombreTrabajador.setBackground(new java.awt.Color(224,224,244));
+  txtNombreTrabajador.setFont(new java.awt.Font("Andale Mono", 1,14));
+  txtNombreTrabajador.setForeground(new java.awt.Color(255,0,0));
+  add(txtNombreTrabajador);
+
+  labelAPaterno = new JLabel("Apellido Paterno:");
+  labelAPaterno.seBounds(25,248,180,25);
+  labelAPaterno.setFont(new Font("Andale Mono" ,1,12));
+  labelAPaterno.setForeground(new Color(255,255,255));
+  add(labelAPaterno);
+
+  txtAPaternoTrabajador = new JTextField();
+  txtAPaternoTrabajador.setBounds(25,273,150,25);
+  txtAPaternoTrabajador.setBackground(new java.awtq.Color(224,224,224));
+  txtAPaternoTrabajadorsetFont(new java.awt.Color(255,0,0));
+  add(txtAPaternoTrabajador);
+
+  labelAMaterno = new JLabel("Apellido Materno:");
+  labelAMaterno.setBounds(25,308,180,25);
+  labelAMaterno.setFont(new Font("Andale Mono",1,12));
+  labelAMaterno.setForeground(new Color(255,25,255));
+  add(labelAMaterno);
+
+  labelAMaternoTrabajador = new JTextField();
+  labelAMaternoTrabajador.setBonds(25,334,150,25);
+  labelAMaternoTrabajador.setBackground
+
+
+ 
+
+
+
+
+
+
